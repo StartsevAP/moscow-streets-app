@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="ru.hackaton.moscowstreets.ui.taskList.TaskItemViewModel" />
+        <import type="ru.hackaton.moscowstreets.data.models.Task.Status"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp">
+
+        <TextView
+            style="@style/AppTextHeader"
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:maxLines="3"
+            tools:text="МКАД внешнее кольцо (МКАД, прямой ход от Абрамцевской до Щелковской транспортной развязки)" />
+
+        <TextView
+            style="@style/AppText"
+            android:textColor="@color/text_secondary"
+            android:id="@+id/tv_category_label"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/task_tv_height"
+            android:layout_below="@id/tv_name"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="6dp"
+            android:text="Категория объекта" />
+
+        <TextView
+            style="@style/AppText"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/tv_category_value"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/task_tv_height"
+            android:layout_alignTop="@id/tv_category_label"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/tv_category_label"
+            tools:text="6" />
+
+        <TextView
+            style="@style/AppText"
+            android:textColor="@color/text_secondary"
+            android:id="@+id/tv_status_label"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/task_tv_height"
+            android:layout_below="@id/tv_category_label"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="6dp"
+            android:text="Статус" />
+
+        <TextView
+            style="@style/AppText"
+            android:textColor="@{viewModel.status == Status.DONE ? @color/text_ok : @color/text_alert}"
+            android:id="@+id/tv_status_value"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/task_tv_height"
+            android:layout_alignStart="@id/tv_category_value"
+            android:layout_alignTop="@id/tv_status_label"
+            tools:text="выполняется" />
+
+        <RatingBar
+            android:id="@+id/ratbar_rating"
+            style="@style/AppRatingBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/tv_status_label"
+            android:layout_alignParentEnd="true"
+            android:numStars="5" />
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,37 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:background">@color/main_background</item>
+        <item name="android:buttonStyle">@style/AppButtonStyle</item>
+    </style>
+
+    <style name="AppTextHeader" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="AppText" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="AppTextInputLayoutNoBorder" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="errorIconDrawable">@null</item>
+        <item name="errorIconTint">@null</item>
+        <item name="hintEnabled">false</item>
+        <item name="boxBackgroundMode">filled</item>
+    </style>
+
+    <style name="AppButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="elevation">4dp</item>
+        <item name="android:insetBottom">1dp</item>
+        <item name="android:insetTop">1dp</item>
+    </style>
+
+    <style name="AppRatingBarStyle" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:progressDrawable">@drawable/rating_bar</item>
+    </style>
+</resources>

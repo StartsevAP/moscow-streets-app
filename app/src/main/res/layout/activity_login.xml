@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="ru.hackaton.moscowstreets.ui.login.LoginViewModel" />
+
+        <import type="ru.hackaton.moscowstreets.ui.login.LoginViewModel.State" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="68dp"
+            android:src="@drawable/ic_main_logo" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            style="@style/AppTextHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="45dp"
+            android:layout_marginTop="32dp"
+            android:lineSpacingExtra="5sp"
+            android:maxLines="3"
+            android:text="@string/app_description_text"
+            android:textAlignment="center" />
+
+        <LinearLayout
+            android:id="@+id/layout_actions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_description"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                app:cardBackgroundColor="@color/white_background"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="4dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_username"
+                    style="@style/AppTextInputLayoutNoBorder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Введите логин"
+                        android:text="@={viewModel.userName}"
+                        tools:text="IvanovII" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="4dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_password"
+                    style="@style/AppTextInputLayoutNoBorder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Введите пароль"
+                        android:inputType="textPassword"
+                        android:text="@={viewModel.password}"
+                        tools:text="******" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <Button
+                style="@style/AppButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:enabled="@{viewModel.allFieldsFilled}"
+                android:onClick="@{()->viewModel.login()}"
+                android:text='@{viewModel.state == State.LOGGING ? "" : @string/enter_button_text}'
+                android:visibility="@{viewModel.state == State.RESTORING ? View.INVISIBLE : View.GONE}" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_below="@id/layout_actions"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:visibility="@{viewModel.state != State.WAITING ? View.VISIBLE : View.GONE}" />
+
+    </RelativeLayout>
+
+</layout>

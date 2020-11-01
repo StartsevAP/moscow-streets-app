@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MoscowStreets</string>
+    <string name="app_description_text">Формирование интерактивной карты благоустройства г. Москвы</string>
+    <string name="login_screen_label">Войдите</string>
+    <string name="main_activity_label">Интерактивная карта благоустройства Москвы</string>
+    <string name="enter_button_text">Войти</string>
+</resources>
